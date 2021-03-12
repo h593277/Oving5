@@ -87,6 +87,7 @@ public class Sorting {
 		
 	}
 	
+	
 	public <T extends Comparable<T>>T[] quickSort(T[] tabell, int lav, int hoy)
 	{
 		if(lav < hoy)
@@ -161,6 +162,19 @@ public class Sorting {
 			mergeSort(tabell, mid+1, hoy);
 			
 			merge(tabell, lav, mid, hoy);
+		}
+		
+		return tabell;
+	}
+	
+	public <T extends Comparable<T>>T[] quickSortNy(T[] tabell, int lav, int hoy)
+	{
+		final int MIN = 10;
+		if(hoy - lav + 1 > lav)
+		{
+			int pivot = quickPartition(tabell, lav, hoy);
+			quickSortNy(tabell, lav, pivot-1);
+			quickSort(tabell, pivot+1, hoy);
 		}
 		
 		return tabell;
